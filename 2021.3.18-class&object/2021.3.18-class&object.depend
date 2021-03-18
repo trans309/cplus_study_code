@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1615900170 source:d:\study\biancheng\c++_study_code\2021.3.17-class&object\main.cpp
+
+1615908645 source:d:\study\biancheng\c++_study_code\2021.3.17-class&object\class-example.cpp
+
+1615909277 source:d:\study\biancheng\c++_study_code\2021.3.17-class&object\class_circle.cpp
+	"class_point.h"
+
+1615909567 d:\study\biancheng\c++_study_code\2021.3.17-class&object\class_point.h
+	<iostream>
+
+1615982082 source:d:\study\biancheng\c++_study_code\2021.3.18-class&object\main.cpp
+	<iostream>
+
+1615910259 source:d:\study\biancheng\c++_study_code\2021.3.18-class&object\class-example.cpp
+
+1615981741 source:d:\study\biancheng\c++_study_code\2021.3.18-class&object\class_circle&point.cpp
+
+1615910563 source:d:\study\biancheng\c++_study_code\2021.3.18-class&object\class_point.cpp
+	"class_point.h"
+
+1615910259 d:\study\biancheng\c++_study_code\2021.3.18-class&object\class_point.h
+	<iostream>
+
+1615910467 d:\study\biancheng\c++_study_code\2021.3.18-class&object\class_circle.h
+	<iostream>
+	"class_point.h"
+
+1615910563 source:d:\study\biancheng\c++_study_code\2021.3.18-class&object\class_circle.cpp
+	"class_circle.h"
+

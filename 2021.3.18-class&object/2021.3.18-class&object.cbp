@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="2021.3.17-lpractice" />
+		<Option title="2021.3.17-class&amp;object" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -32,15 +32,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="guess.cpp" />
+		<Unit filename="class-example.cpp" />
+		<Unit filename="class_circle&amp;point.cpp" />
+		<Unit filename="class_circle.cpp" />
+		<Unit filename="class_circle.h" />
+		<Unit filename="class_point.cpp" />
+		<Unit filename="class_point.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="敲桌子（逢7过）.cpp" />
-		<Unit filename="水仙花数.cpp" />
-		<Unit filename="矩阵+口诀表.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
 			<debugger />
+			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
