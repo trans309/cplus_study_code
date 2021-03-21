@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1616165988 source:d:\study\biancheng\cplus_study_code+local\2021.3.19-operator overloading\main.cpp
+	"OperatorOverloading.h"
+
+1616165988 d:\study\biancheng\cplus_study_code+local\2021.3.19-operator overloading\operatoroverloading.h
+	<iostream>
+	<string>
+
+1616159416 source:d:\study\biancheng\cplus_study_code+local\2021.3.19-operator overloading\operator+.cpp
+	"OperatorOverloading.h"
+
+1616166427 source:d:\study\biancheng\cplus_study_code+local\2021.3.19-operator overloading\operator().cpp
+	"OperatorOverloading.h"
+
+1616164176 source:d:\study\biancheng\cplus_study_code+local\2021.3.19-operator overloading\operator++.cpp
+	"OperatorOverloading.h"
+
+1616165988 source:d:\study\biancheng\cplus_study_code+local\2021.3.19-operator overloading\operator-relational.cpp
+	"OperatorOverloading.h"
+
+1616162684 source:d:\study\biancheng\cplus_study_code+local\2021.3.19-operator overloading\operator-shift_left.cpp
+	"OperatorOverloading.h"
+
+1616165988 source:d:\study\biancheng\cplus_study_code+local\2021.3.19-operator overloading\operator=.cpp
+	"OperatorOverloading.h"
+
