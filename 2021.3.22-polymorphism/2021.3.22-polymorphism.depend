@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1616390231 source:d:\study\biancheng\c_study_code_local\2021.3.22-polymorphism\main.cpp
+	"head.h"
+
+1616434993 d:\study\biancheng\c_study_code_local\2021.3.22-polymorphism\head.h
+	<iostream>
+	<string>
+
+1616436288 source:d:\study\biancheng\c_study_code_local\2021.3.22-polymorphism\calculator.cpp
+	"head.h"
+
