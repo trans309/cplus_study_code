@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/2021.3.22-polymorphism" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/2021.3" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -16,7 +16,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/2021.3.22-polymorphism" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/2021.3" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -32,9 +32,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Assemble the computer.cpp" />
 		<Unit filename="Calculator.cpp" />
+		<Unit filename="Pure virtual function.cpp" />
 		<Unit filename="head.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="make drink.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
