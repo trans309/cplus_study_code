@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1616654568 source:d:\study\biancheng\cplus_study_code_local\2021.3.15-file operations\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+
+1616659244 source:d:\study\biancheng\cplus_study_code_local\2021.3.25-file operations\binary.cpp
+	<iostream>
+	<fstream>
+	<string>
+
+1616656712 source:d:\study\biancheng\cplus_study_code_local\2021.3.25-file operations\text.cpp
+
