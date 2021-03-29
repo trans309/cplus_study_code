@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1617033162 source:d:\study\biancheng\cplus_study_code_local\2021.3.26-employee management system(project)\menu_system.cpp
+	"menu_system.h"
+	"worker.h"
+
+1617031347 d:\study\biancheng\cplus_study_code_local\2021.3.26-employee management system(project)\menu_system.h
+	<iostream>
+	<cstdlib>
+	"worker.h"
+
+1617032096 source:d:\study\biancheng\cplus_study_code_local\2021.3.26-employee management system(project)\main.cpp
+	"menu_system.h"
+
+1617033181 d:\study\biancheng\cplus_study_code_local\2021.3.26-employee management system(project)\worker.h
+	<iostream>
+	<cstdlib>
+	<string>
+
+1617033162 source:d:\study\biancheng\cplus_study_code_local\2021.3.26-employee management system(project)\worker.cpp
+	"worker.h"
+
