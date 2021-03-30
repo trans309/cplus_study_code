@@ -2,10 +2,11 @@
 
 
 //employee
-employee::employee(string m_id,string m_name)
+employee::employee(string m_id,string m_name,int m_p_id)
 {
     this->id=m_id;
     this->name=m_name;
+    this->p_id=m_p_id;
 }
 void employee::showInfo()
 {
@@ -21,10 +22,11 @@ string employee::get_post()
 
 
 //manage
-manage::manage(string m_id,string m_name)
+manage::manage(string m_id,string m_name,int m_p_id)
 {
     this->id=m_id;
     this->name=m_name;
+    this->p_id=m_p_id;
 }
 void manage::showInfo()
 {
@@ -40,10 +42,11 @@ string manage::get_post()
 
 
 //boss
-boss::boss(string m_id,string m_name)
+boss::boss(string m_id,string m_name,int m_p_id)
 {
     this->id=m_id;
     this->name=m_name;
+    this->p_id=m_p_id;
 }
 void boss::showInfo()
 {

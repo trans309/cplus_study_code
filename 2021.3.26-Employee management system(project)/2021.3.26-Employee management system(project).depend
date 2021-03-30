@@ -19,3 +19,24 @@
 1617033162 source:d:\study\biancheng\cplus_study_code_local\2021.3.26-employee management system(project)\worker.cpp
 	"worker.h"
 
+1617032096 source:d:\study\biancheng\cplus_study_code\2021.3.26-employee management system(project)\main.cpp
+	"menu_system.h"
+
+1617122494 d:\study\biancheng\cplus_study_code\2021.3.26-employee management system(project)\menu_system.h
+	<iostream>
+	<cstdlib>
+	"worker.h"
+	<fstream>
+
+1617097606 d:\study\biancheng\cplus_study_code\2021.3.26-employee management system(project)\worker.h
+	<iostream>
+	<cstdlib>
+	<string>
+
+1617121773 source:d:\study\biancheng\cplus_study_code\2021.3.26-employee management system(project)\menu_system.cpp
+	"menu_system.h"
+	"worker.h"
+
+1617097606 source:d:\study\biancheng\cplus_study_code\2021.3.26-employee management system(project)\worker.cpp
+	"worker.h"
+
