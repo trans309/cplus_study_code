@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1617125754 source:d:\study\biancheng\cplus_study_code\2021.3.31-template\main.cpp
+	"head.h"
+
+1617125754 d:\study\biancheng\cplus_study_code\2021.3.31-template\head.h
+	<iostream>
+
+1617126752 source:d:\study\biancheng\cplus_study_code\2021.3.31-template\insertion sort.cpp
+	"head.h"
+
