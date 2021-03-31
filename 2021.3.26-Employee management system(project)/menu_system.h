@@ -7,24 +7,35 @@ using namespace std;
 #include <cstdlib>
 #include "worker.h"
 #include <fstream>
+#include <string>
 
 #define FILENAME "The worker list.data"
 
 class menu_system
 {
 public:
-    //基本系统
+    //基本系统功能
     void menu();
     void add_worker();
+    void delete_worker();
     void show_worker();
+    void search_worker();
+    void clean_worker();
+    void modify_worker();
+    void sort_worker();
+
+    //附加系统功能
     void save_worker();
+    int find_worker(string);
+    void mod_pid(worker* &sor);//修改职位
+    void choose_sort(worker** &sor,int way1,int way2);
 
 
 
     //基本变量
     int worker_num;//职工人数
     worker** worker_arr;//保存职工数组
-    bool FileExists;
+    bool FileExists;//判断文件存在且有数据---flag
 
 
     //构造--有文件时初始化人数
@@ -42,7 +53,8 @@ public:
         if(!ifs.is_open())
         {
             //测试
-            cout<<"文件不存在！！"<<endl;
+//            cout<<"文件不存在！！"<<endl;
+
             //初始化
             worker_num=0;
             worker_arr=NULL;
@@ -57,11 +69,12 @@ public:
         if(ifs.eof())
         {
             //测试
-            cout<<"文件无内容！！"<<endl;
+//            cout<<"文件无内容！！"<<endl;
+
             //初始化
             worker_num=0;
             worker_arr=NULL;
-            FileExists=true;
+            FileExists=false;
             ifs.close();
             return;
         }
