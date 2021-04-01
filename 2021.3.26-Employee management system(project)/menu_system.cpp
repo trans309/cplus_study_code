@@ -358,20 +358,71 @@ void menu_system::clean_worker()
     //确认清空
     if(c=="y")
     {
-        //释放空间
-        delete[] this->worker_arr;
+        //判断数组是否有元素
+        if(this->worker_arr != NULL)
+        {
+            //1、先释放空间，后保存文件
 
-        //初始化数组与人数
-        this->worker_arr=NULL;
-        this->worker_num=0;
+//            //循环释放每个每个元素
+//            for(int i=0;i<this->worker_num;i++)
+//            {
+//                if(this->worker_arr[i] != NULL)
+//                {
+//                    delete this->worker_arr[i];
+//                    this->worker_arr[i]=NULL;
+//                }
+//
+//            }
+//
+//            //释放数组空间
+//            delete[] this->worker_arr;
+//
+//            //初始化数组与人数
+//            this->worker_arr=NULL;
+//            this->worker_num=0;
+//
+//            //初始化flag为空
+//            this->FileExists=false;
+//
+//            //保存文件
+//            this->save_worker();
+//            cout<<"所有信息已清空！！\n"<<endl;
+//            return;
 
-        //初始化flag为空
-        this->FileExists=false;
 
-        //保存文件
-        this->save_worker();
-        cout<<"所有信息已清空！！\n"<<endl;
-        return;
+
+            //2、先重建空文件，后释放空间
+
+            ofstream ofs;
+            ofs.open(FILENAME,ios::trunc);
+
+            //循环释放每个每个元素
+//            for(int i=0;i<this->worker_num;i++)
+//            {
+//                if(this->worker_arr[i] != NULL)
+//                {
+//                    delete this->worker_arr[i];
+//                    this->worker_arr[i]=NULL;
+//                }
+//
+//            }
+
+            //释放数组空间
+            delete[] this->worker_arr;
+
+            //初始化数组与人数
+            this->worker_arr=NULL;
+            this->worker_num=0;
+
+            //初始化flag为空
+            this->FileExists=false;
+
+            //关闭文件
+            ofs.close();
+            cout<<"所有信息已清空！！\n"<<endl;
+            return;
+
+        }
     }
 
     //取消清空
