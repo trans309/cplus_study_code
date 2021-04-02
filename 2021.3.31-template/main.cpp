@@ -2,7 +2,8 @@
 
 int main()
 {
-    SelS_test();
+//    SelS_test();
+    test1();
 
     return 0;
 }

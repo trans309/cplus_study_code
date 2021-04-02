@@ -4,3 +4,5 @@
 using namespace std;
 
 void SelS_test();
+
+void test1();

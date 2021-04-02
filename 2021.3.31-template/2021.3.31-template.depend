@@ -1,10 +1,20 @@
 # depslib dependency file v1.0
-1617125754 source:d:\study\biancheng\cplus_study_code\2021.3.31-template\main.cpp
+1617357782 source:d:\study\biancheng\cplus_study_code\2021.3.31-template\main.cpp
 	"head.h"
 
-1617125754 d:\study\biancheng\cplus_study_code\2021.3.31-template\head.h
+1617357782 d:\study\biancheng\cplus_study_code\2021.3.31-template\head.h
 	<iostream>
 
 1617126752 source:d:\study\biancheng\cplus_study_code\2021.3.31-template\insertion sort.cpp
 	"head.h"
+
+1617127222 source:d:\study\biancheng\cplus_study_code\2021.3.31-template\select sort.cpp
+	"head.h"
+
+1617371417 source:d:\study\biancheng\cplus_study_code\2021.3.31-template\myarray.cpp
+	"head.h"
+	"MyArray.hpp"
+
+1617371381 d:\study\biancheng\cplus_study_code\2021.3.31-template\myarray.hpp
+	<iostream>
 
