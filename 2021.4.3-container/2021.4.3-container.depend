@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1617441558 source:d:\study\biancheng\cplus_study_code\2021.4.3-container\list example.cpp
+	<iostream>
+	"container.h"
+	<string>
+	<list>
+	<cstdlib>
+	<fstream>
+
+1617437513 d:\study\biancheng\cplus_study_code\2021.4.3-container\container.h
+	<iostream>
+
+1617438462 source:d:\study\biancheng\cplus_study_code\2021.4.3-container\main.cpp
+	<iostream>
+	"container.h"
+	<cstdlib>
+
