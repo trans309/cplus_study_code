@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1617380634 source:d:\study\biancheng\cplus_study_code\2021.4.2-vector+deque\main.cpp
+	<iostream>
+	"STL.h"
+
+1617426747 d:\study\biancheng\cplus_study_code\2021.4.2-vector+deque\stl.h
+	<iostream>
+
+1617375531 source:d:\study\biancheng\cplus_study_code\2021.4.2-vector+deque\two dimensional vector.cpp
+	<iostream>
+	"STL.h"
+	<vector>
+
+1617430503 source:d:\study\biancheng\cplus_study_code\2021.4.2-vector+deque\judges score.cpp
+	"STL.h"
+	<vector>
+	<deque>
+	<string>
+	<algorithm>
+	<ctime>
+
