@@ -4,3 +4,4 @@
 using namespace std;
 
 void test1();
+void test2();

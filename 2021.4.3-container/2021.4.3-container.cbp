@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/2021.4.3-container" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/2021.4" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -16,7 +16,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/2021.4.3-container" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/2021.4" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -32,6 +32,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Employee groups.cpp" />
 		<Unit filename="container.h" />
 		<Unit filename="list example.cpp" />
 		<Unit filename="main.cpp" />
