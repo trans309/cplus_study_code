@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1617696845 source:d:\study\biancheng\cplus_study_code\2021.4.5-演讲比赛流程管理系统\main.cpp
+	<iostream>
+	"System base.h"
+	<cstdlib>
+
+1617697771 d:\study\biancheng\cplus_study_code\2021.4.5-演讲比赛流程管理系统\system base.h
+	<iostream>
+	<vector>
+	"Player.h"
+	<map>
+
+1617698796 source:d:\study\biancheng\cplus_study_code\2021.4.5-演讲比赛流程管理系统\system base.cpp
+	<iostream>
+	"System base.h"
+	"cstdlib"
+	<string>
+	<vector>
+	<algorithm>
+	<ctime>
+	<deque>
+	<numeric>
+	<fstream>
+
+1617614653 d:\study\biancheng\cplus_study_code\2021.4.5-演讲比赛流程管理系统\player.h
+	<iostream>
+	<string>
+
+1617614509 source:d:\study\biancheng\cplus_study_code\2021.4.5-演讲比赛流程管理系统\player.cpp
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	"Player.h"
+
