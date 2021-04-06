@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <fstream>
 
+
 #define filename "data"
 
 using namespace std;
@@ -105,6 +106,7 @@ void read(list<person>& p)
 
 void test1()
 {
+
     list<person> p;
 
     //╤ах║нд╪Ч

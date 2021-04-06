@@ -3,6 +3,7 @@
 #include <map>
 #include <string>
 #include <cstdlib>
+#include <ctime>
 
 class Employee
 {
@@ -86,6 +87,7 @@ void print_by_department(multimap<int,Employee>&e)
 
 void test2()
 {
+    srand((unsigned int)time(NULL));
     vector<Employee>E;
     multimap<int,Employee>e;
 
