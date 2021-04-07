@@ -4,10 +4,13 @@ using namespace std;
 
 #include "ReservationSystem.h"
 #include "administrator.h"
+#include "student.h"
+#include "teacher.h"
+#include "computer_room.h"
 
-#define filename_ad "管理员信息"
-#define filename_tea "教师信息"
-#define filename_stu "学生信息"
+#define filename_ad "./file/管理员信息.txt"
+#define filename_tea "./file/教师信息.txt"
+#define filename_stu "./file/学生信息.txt"
 
 ReservationSystem::ReservationSystem()
 {
@@ -27,7 +30,11 @@ ReservationSystem::~ReservationSystem()
 
 void ReservationSystem::AdministratorSystem()
 {
-    this->read_IentityFile(1);
+    system("cls");
+
+    this->init_readfile(this->AdminInfo,this->TeaInfo,this->StuInfo);
+
+    Administrator ad_t;
 
     while(1)
     {
@@ -42,9 +49,11 @@ void ReservationSystem::AdministratorSystem()
         case AD_RETURN:
             return;
         case REGISTRATION:
+            ad_t.Registration_menu(this->AdminInfo);
             break;
         case LOGIN:
-            break;
+            ad_t.Login_menu(this->AdminInfo,this->TeaInfo,this->StuInfo);
+            return;
         default:
             cout<<"错误输入，请重新输入！"<<endl;
             break;
@@ -92,31 +101,33 @@ void ReservationSystem::menu_choice()
     cout<<"     |----------------|      "<<endl;
 }
 
-void ReservationSystem::read_IentityFile(int type)
+void ReservationSystem::read_IentityFile(int type,vector<Administrator> &AdminInfo,vector<Teacher> &TeaInfo,vector<Student> &StuInfo)
 {
     //1、打开文件
     ifstream ifs;
     if(type==1) ifs.open(filename_ad,ios::in);
     if(type==2) ifs.open(filename_tea,ios::in);
     if(type==3) ifs.open(filename_stu,ios::in);
+
     //2、文件是否存在
     if(!ifs.is_open())
     {
         if(type==1)
         {
-            ReservationSystem::ad_empty=true;
+//            cout<<"文件不存在";
+            this->ad_empty=true;
             return;
         }
 
         if(type==2)
         {
-            ReservationSystem::tea_empty=true;
+            this->tea_empty=true;
             return;
         }
 
         if(type==3)
         {
-            ReservationSystem::stu_empty=true;
+            this->stu_empty=true;
             return;
         }
     }
@@ -128,19 +139,20 @@ void ReservationSystem::read_IentityFile(int type)
     {
         if(type==1)
         {
-            ReservationSystem::ad_empty=true;
+//            cout<<"文件为空";
+            this->ad_empty=true;
             return;
         }
 
         if(type==2)
         {
-            ReservationSystem::tea_empty=true;
+            this->tea_empty=true;
             return;
         }
 
         if(type==3)
         {
-            ReservationSystem::stu_empty=true;
+            this->stu_empty=true;
             return;
         }
     }
@@ -150,19 +162,49 @@ void ReservationSystem::read_IentityFile(int type)
 
     if(type==1)
     {
-        ReservationSystem::ad_empty=false;
+//        cout<<"文件读取成功"<<endl;
+        this->ad_empty=false;
+        Administrator ad_t;
+        while(ifs>>ad_t.I_Name&&ifs>>ad_t.I_Password)
+        {
+            AdminInfo.push_back(ad_t);
+        }
     }
 
     if(type==2)
     {
-        ReservationSystem::tea_empty=false;
+        this->tea_empty=false;
+        Teacher tea_t;
+        while(ifs>>tea_t.TeaNum&&ifs>>tea_t.I_Name&&ifs>>tea_t.I_Password)
+        {
+            TeaInfo.push_back(tea_t);
+        }
     }
 
     if(type==3)
     {
-        ReservationSystem::stu_empty=false;
+        this->stu_empty=false;
+        Student stu_t;
+        while(ifs>>stu_t.StuNum&&ifs>>stu_t.I_Name&&ifs>>stu_t.I_Password)
+        {
+            StuInfo.push_back(stu_t);
+        }
     }
 
     //5、关闭文件
     ifs.close();
+}
+
+void ReservationSystem::init_readfile(vector<Administrator> &AdminInfo,vector<Teacher> &TeaInfo,vector<Student> &StuInfo)
+{
+//    cout<<"调用init";
+
+    AdminInfo.clear();
+    read_IentityFile(1,AdminInfo,TeaInfo,StuInfo);
+
+    TeaInfo.clear();
+    read_IentityFile(2,AdminInfo,TeaInfo,StuInfo);
+
+    StuInfo.clear();
+    read_IentityFile(3,AdminInfo,TeaInfo,StuInfo);
 }

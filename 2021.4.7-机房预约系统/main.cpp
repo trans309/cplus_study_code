@@ -9,11 +9,11 @@ int main()
 {
     ReservationSystem rs;
 
-    //打印菜单
-    rs.menu();
-
     while(1)
     {
+        //打印菜单
+        rs.menu();
+
         cout<<"请选择登入系统：";
         int choice;
         cin>>choice;
@@ -25,7 +25,7 @@ int main()
             rs.Exit();
             break;
         case ADMINISTRATOR:
-//            rs.AdministratorSystem();
+            rs.AdministratorSystem();
             break;
         case TEACHER:
 //            rs.TeacherSystem();

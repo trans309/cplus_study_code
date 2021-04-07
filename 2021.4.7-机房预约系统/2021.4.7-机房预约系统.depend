@@ -1,18 +1,23 @@
 # depslib dependency file v1.0
-1617778303 source:d:\study\biancheng\cplus_study_code\2021.4.7-机房预约系统\reservationsystem.cpp
+1617819207 source:d:\study\biancheng\cplus_study_code\2021.4.7-机房预约系统\reservationsystem.cpp
 	<iostream>
 	"ReservationSystem.h"
 	"administrator.h"
+	"student.h"
+	"teacher.h"
+	"computer_room.h"
 
-1617778770 d:\study\biancheng\cplus_study_code\2021.4.7-机房预约系统\reservationsystem.h
+1617818919 d:\study\biancheng\cplus_study_code\2021.4.7-机房预约系统\reservationsystem.h
 	<iostream>
 	<cstdlib>
 	<vector>
+	<map>
 	"administrator.h"
 	"teacher.h"
 	"student.h"
+	"computer_room.h"
 
-1617766687 source:d:\study\biancheng\cplus_study_code\2021.4.7-机房预约系统\main.cpp
+1617809618 source:d:\study\biancheng\cplus_study_code\2021.4.7-机房预约系统\main.cpp
 	<iostream>
 	"ReservationSystem.h"
 
@@ -45,7 +50,7 @@
 	<iostream>
 	<string>
 
-1617778824 d:\study\biancheng\cplus_study_code\2021.4.7-机房预约系统\administrator.h
+1617819563 d:\study\biancheng\cplus_study_code\2021.4.7-机房预约系统\administrator.h
 	<iostream>
 	<map>
 	<vector>
@@ -62,7 +67,7 @@
 	"ReservationSystem.h"
 	<cstdlib>
 
-1617778303 source:d:\study\biancheng\cplus_study_code\2021.4.7-机房预约系统\administrator.cpp
+1617820253 source:d:\study\biancheng\cplus_study_code\2021.4.7-机房预约系统\administrator.cpp
 	<iostream>
 	"administrator.h"
 	"ReservationSystem.h"
