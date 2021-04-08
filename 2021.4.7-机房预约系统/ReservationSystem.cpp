@@ -11,12 +11,21 @@ using namespace std;
 #define filename_ad "./file/管理员信息.txt"
 #define filename_tea "./file/教师信息.txt"
 #define filename_stu "./file/学生信息.txt"
+#define filename_ComRoom "./file/机房信息.txt"
 
 ReservationSystem::ReservationSystem()
 {
-        this->ad_empty=true;
-        this->tea_empty=true;
-        this->stu_empty=true;
+    this->AdminInfo.clear();
+    this->read_IentityFile(1,this->AdminInfo,this->TeaInfo,this->StuInfo);
+
+    this->TeaInfo.clear();
+    this->read_IentityFile(1,this->AdminInfo,this->TeaInfo,this->StuInfo);
+
+    this->StuInfo.clear();
+    this->read_IentityFile(1,this->AdminInfo,this->TeaInfo,this->StuInfo);
+
+    this->ComRoomInfo.clear();
+    this->read_ComRoomFile(this->ComRoomInfo);
 }
 
 ReservationSystem::~ReservationSystem()
@@ -32,9 +41,9 @@ void ReservationSystem::AdministratorSystem()
 {
     system("cls");
 
-    this->init_readfile(this->AdminInfo,this->TeaInfo,this->StuInfo);
+    this->init_readfile(this->ComRoomInfo,this->AdminInfo,this->TeaInfo,this->StuInfo);
 
-    Administrator ad_t;
+    Administrator ad;
 
     while(1)
     {
@@ -49,10 +58,10 @@ void ReservationSystem::AdministratorSystem()
         case AD_RETURN:
             return;
         case REGISTRATION:
-            ad_t.Registration_menu(this->AdminInfo);
+            ad.Registration_menu(this->AdminInfo);
             break;
         case LOGIN:
-            ad_t.Login_menu(this->AdminInfo,this->TeaInfo,this->StuInfo);
+            ad.Login_menu(this->ComRoomInfo,this->AdminInfo,this->TeaInfo,this->StuInfo);
             return;
         default:
             cout<<"错误输入，请重新输入！"<<endl;
@@ -112,24 +121,8 @@ void ReservationSystem::read_IentityFile(int type,vector<Administrator> &AdminIn
     //2、文件是否存在
     if(!ifs.is_open())
     {
-        if(type==1)
-        {
-//            cout<<"文件不存在";
-            this->ad_empty=true;
-            return;
-        }
-
-        if(type==2)
-        {
-            this->tea_empty=true;
-            return;
-        }
-
-        if(type==3)
-        {
-            this->stu_empty=true;
-            return;
-        }
+//        cout<<"文件不存在";
+        return;
     }
 
     //3、文件是否为空
@@ -137,24 +130,10 @@ void ReservationSystem::read_IentityFile(int type,vector<Administrator> &AdminIn
     ch=ifs.get();
     if(ifs.eof())
     {
-        if(type==1)
-        {
-//            cout<<"文件为空";
-            this->ad_empty=true;
-            return;
-        }
 
-        if(type==2)
-        {
-            this->tea_empty=true;
-            return;
-        }
+//        cout<<"文件为空";
+        return;
 
-        if(type==3)
-        {
-            this->stu_empty=true;
-            return;
-        }
     }
 
     //4、文件读取
@@ -163,7 +142,6 @@ void ReservationSystem::read_IentityFile(int type,vector<Administrator> &AdminIn
     if(type==1)
     {
 //        cout<<"文件读取成功"<<endl;
-        this->ad_empty=false;
         Administrator ad_t;
         while(ifs>>ad_t.I_Name&&ifs>>ad_t.I_Password)
         {
@@ -173,7 +151,6 @@ void ReservationSystem::read_IentityFile(int type,vector<Administrator> &AdminIn
 
     if(type==2)
     {
-        this->tea_empty=false;
         Teacher tea_t;
         while(ifs>>tea_t.TeaNum&&ifs>>tea_t.I_Name&&ifs>>tea_t.I_Password)
         {
@@ -183,7 +160,6 @@ void ReservationSystem::read_IentityFile(int type,vector<Administrator> &AdminIn
 
     if(type==3)
     {
-        this->stu_empty=false;
         Student stu_t;
         while(ifs>>stu_t.StuNum&&ifs>>stu_t.I_Name&&ifs>>stu_t.I_Password)
         {
@@ -195,7 +171,47 @@ void ReservationSystem::read_IentityFile(int type,vector<Administrator> &AdminIn
     ifs.close();
 }
 
-void ReservationSystem::init_readfile(vector<Administrator> &AdminInfo,vector<Teacher> &TeaInfo,vector<Student> &StuInfo)
+void ReservationSystem::read_ComRoomFile(map<int,ComputerRoom> &ComInfo)
+{
+        //1、打开文件
+    ifstream ifs;
+    ifs.open(filename_ComRoom,ios::in);
+
+    //2、文件是否存在
+    if(!ifs.is_open())
+    {
+//        cout<<"文件不存在";
+        return;
+    }
+
+    //3、文件是否为空
+    char ch;
+    ch=ifs.get();
+    if(ifs.eof())
+    {
+
+//        cout<<"文件为空";
+        return;
+
+    }
+
+    //4、文件读取
+    ifs.putback(ch);
+    int index;
+
+
+//    cout<<"文件读取成功"<<endl;
+    ComputerRoom com_t;
+    while(ifs>>index&&ifs>>com_t.capacity&&ifs>>com_t.state&&ifs>>com_t.Week&&ifs>>com_t.time)
+    {
+        ComInfo.insert(make_pair(index,com_t));
+    }
+
+    //5、关闭文件
+    ifs.close();
+}
+
+void ReservationSystem::init_readfile(map<int,ComputerRoom> &ComRoomInfo,vector<Administrator> &AdminInfo,vector<Teacher> &TeaInfo,vector<Student> &StuInfo)
 {
 //    cout<<"调用init";
 
@@ -207,4 +223,7 @@ void ReservationSystem::init_readfile(vector<Administrator> &AdminInfo,vector<Te
 
     StuInfo.clear();
     read_IentityFile(3,AdminInfo,TeaInfo,StuInfo);
+
+    ComRoomInfo.clear();
+    read_ComRoomFile(ComRoomInfo);
 }

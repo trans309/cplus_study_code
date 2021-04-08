@@ -32,15 +32,11 @@ class ReservationSystem
 {
 public:
 
-    bool ad_empty;
-    bool tea_empty;
-    bool stu_empty;
-
     vector<Administrator> AdminInfo;//管理员信息
     vector<Teacher> TeaInfo;//教师信息
     vector<Student> StuInfo;//学生信息
 
-    map<int,ComputerRoom> A_ComInfo;//机房信息
+    map<int,ComputerRoom> ComRoomInfo;//机房信息
 
 
 
@@ -78,9 +74,11 @@ public:
     //type2---教师
     //type3---学生
     void read_IentityFile(int type,vector<Administrator> &AdminInfo,vector<Teacher> &TeaInfo,vector<Student> &StuInfo);
+    //读取机房文件
+    void read_ComRoomFile(map<int,ComputerRoom> &ComInfo);
 
     //初始化读取文件
-    void init_readfile(vector<Administrator> &AdminInfo,vector<Teacher> &TeaInfo,vector<Student> &StuInfo);
+    void init_readfile(map<int,ComputerRoom> &ComRoomInfo,vector<Administrator> &AdminInfo,vector<Teacher> &TeaInfo,vector<Student> &StuInfo);
 
 
 };
