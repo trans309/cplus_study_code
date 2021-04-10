@@ -7,25 +7,19 @@ using namespace std;
 #include "student.h"
 #include "teacher.h"
 #include "computer_room.h"
+#include "order.h"
+#include "Identity.h"
 
 #define filename_ad "./file/管理员信息.txt"
 #define filename_tea "./file/教师信息.txt"
 #define filename_stu "./file/学生信息.txt"
-#define filename_ComRoom "./file/机房信息.txt"
+#define filename_CRO "./file/机房-预约记录.txt"
 
 ReservationSystem::ReservationSystem()
 {
-    this->AdminInfo.clear();
-    this->read_IentityFile(1,this->AdminInfo,this->TeaInfo,this->StuInfo);
-
-    this->TeaInfo.clear();
-    this->read_IentityFile(1,this->AdminInfo,this->TeaInfo,this->StuInfo);
-
-    this->StuInfo.clear();
-    this->read_IentityFile(1,this->AdminInfo,this->TeaInfo,this->StuInfo);
-
-    this->ComRoomInfo.clear();
-    this->read_ComRoomFile(this->ComRoomInfo);
+    this->Init_Admin_ReadFile(this->CRoomOrder,this->AdminInfo,this->TeaInfo,this->StuInfo);
+    this->Init_Tea_ReadFile(this->TeaInfo,this->CRoomOrder);
+    this->Init_Stu_ReadFile(this->StuInfo,this->CRoomOrder);
 }
 
 ReservationSystem::~ReservationSystem()
@@ -41,7 +35,8 @@ void ReservationSystem::AdministratorSystem()
 {
     system("cls");
 
-    this->init_readfile(this->ComRoomInfo,this->AdminInfo,this->TeaInfo,this->StuInfo);
+    this->Init_Admin_ReadFile(this->CRoomOrder,this->AdminInfo,this->TeaInfo,this->StuInfo);
+//    this->check_CRoom_empty(this->CRoomOrder);
 
     Administrator ad;
 
@@ -55,13 +50,13 @@ void ReservationSystem::AdministratorSystem()
 
         switch(ad_choice)
         {
-        case AD_RETURN:
+        case RETURN:
             return;
         case REGISTRATION:
             ad.Registration_menu(this->AdminInfo);
             break;
         case LOGIN:
-            ad.Login_menu(this->ComRoomInfo,this->AdminInfo,this->TeaInfo,this->StuInfo);
+            ad.Login_menu(this->CRoomOrder,this->AdminInfo,this->TeaInfo,this->StuInfo);
             return;
         default:
             cout<<"错误输入，请重新输入！"<<endl;
@@ -72,7 +67,81 @@ void ReservationSystem::AdministratorSystem()
         system("cls");
     }
 
+}
 
+void ReservationSystem::TeacherSystem()
+{
+    system("cls");
+
+    this->Init_Tea_ReadFile(this->TeaInfo,this->CRoomOrder);
+//    this->check_CRoom_empty(this->CRoomOrder);
+
+    Teacher tea;
+
+    while(1)
+    {
+        this->menu_choice();
+
+        cout<<"请选择操作：";
+        int tea_choice;
+        cin>>tea_choice;
+
+        switch(tea_choice)
+        {
+        case RETURN:
+            return;
+        case REGISTRATION:
+            tea.Registration_menu(this->TeaInfo);
+            break;
+        case LOGIN:
+            tea.Login_menu(this->TeaInfo,this->CRoomOrder);
+            return;
+        default:
+            cout<<"错误输入，请重新输入！"<<endl;
+            break;
+        }
+
+        system("pause");
+        system("cls");
+    }
+
+}
+
+void ReservationSystem::StudentSystem()
+{
+    system("cls");
+
+    this->Init_Stu_ReadFile(this->StuInfo,this->CRoomOrder);
+//    this->check_CRoom_empty(this->CRoomOrder);
+
+    Student stu;
+
+    while(1)
+    {
+        this->menu_choice();
+
+        cout<<"请选择操作：";
+        int stu_choice;
+        cin>>stu_choice;
+
+        switch(stu_choice)
+        {
+        case RETURN:
+            return;
+        case REGISTRATION:
+            stu.Registration_menu(this->StuInfo);
+            break;
+        case LOGIN:
+            stu.Login_menu(this->StuInfo,this->CRoomOrder);
+            return;
+        default:
+            cout<<"错误输入，请重新输入！"<<endl;
+            break;
+        }
+
+        system("pause");
+        system("cls");
+    }
 
 }
 
@@ -110,120 +179,263 @@ void ReservationSystem::menu_choice()
     cout<<"     |----------------|      "<<endl;
 }
 
-void ReservationSystem::read_IentityFile(int type,vector<Administrator> &AdminInfo,vector<Teacher> &TeaInfo,vector<Student> &StuInfo)
+void ReservationSystem::read_AdminFile(vector<Administrator> &AdminInfo)
 {
     //1、打开文件
     ifstream ifs;
-    if(type==1) ifs.open(filename_ad,ios::in);
-    if(type==2) ifs.open(filename_tea,ios::in);
-    if(type==3) ifs.open(filename_stu,ios::in);
+    ifs.open(filename_ad,ios::in);
 
     //2、文件是否存在
     if(!ifs.is_open())
     {
 //        cout<<"文件不存在";
+        ifs.close();
         return;
     }
 
     //3、文件是否为空
     char ch;
     ch=ifs.get();
+
     if(ifs.eof())
     {
-
 //        cout<<"文件为空";
+        ifs.close();
         return;
-
     }
 
     //4、文件读取
     ifs.putback(ch);
-
-    if(type==1)
-    {
-//        cout<<"文件读取成功"<<endl;
-        Administrator ad_t;
-        while(ifs>>ad_t.I_Name&&ifs>>ad_t.I_Password)
-        {
-            AdminInfo.push_back(ad_t);
-        }
-    }
-
-    if(type==2)
-    {
-        Teacher tea_t;
-        while(ifs>>tea_t.TeaNum&&ifs>>tea_t.I_Name&&ifs>>tea_t.I_Password)
-        {
-            TeaInfo.push_back(tea_t);
-        }
-    }
-
-    if(type==3)
-    {
-        Student stu_t;
-        while(ifs>>stu_t.StuNum&&ifs>>stu_t.I_Name&&ifs>>stu_t.I_Password)
-        {
-            StuInfo.push_back(stu_t);
-        }
-    }
-
-    //5、关闭文件
-    ifs.close();
-}
-
-void ReservationSystem::read_ComRoomFile(map<int,ComputerRoom> &ComInfo)
-{
-        //1、打开文件
-    ifstream ifs;
-    ifs.open(filename_ComRoom,ios::in);
-
-    //2、文件是否存在
-    if(!ifs.is_open())
-    {
-//        cout<<"文件不存在";
-        return;
-    }
-
-    //3、文件是否为空
-    char ch;
-    ch=ifs.get();
-    if(ifs.eof())
-    {
-
-//        cout<<"文件为空";
-        return;
-
-    }
-
-    //4、文件读取
-    ifs.putback(ch);
-    int index;
-
 
 //    cout<<"文件读取成功"<<endl;
-    ComputerRoom com_t;
-    while(ifs>>index&&ifs>>com_t.capacity&&ifs>>com_t.state&&ifs>>com_t.Week&&ifs>>com_t.time)
+    Administrator ad_t;
+    while(ifs>>ad_t.I_Name&&ifs>>ad_t.I_Password)
     {
-        ComInfo.insert(make_pair(index,com_t));
+        AdminInfo.push_back(ad_t);
     }
 
     //5、关闭文件
     ifs.close();
 }
 
-void ReservationSystem::init_readfile(map<int,ComputerRoom> &ComRoomInfo,vector<Administrator> &AdminInfo,vector<Teacher> &TeaInfo,vector<Student> &StuInfo)
+void ReservationSystem::read_Teafile(vector<Teacher> &TeaInfo)
+{
+    //1、打开文件
+    ifstream ifs;
+    ifs.open(filename_tea,ios::in);
+
+    //2、文件是否存在
+    if(!ifs.is_open())
+    {
+//        cout<<"文件不存在";
+        ifs.close();
+        return;
+    }
+
+    //3、文件是否为空
+    char ch;
+    ch=ifs.get();
+
+    if(ifs.eof())
+    {
+//        cout<<"文件为空";
+        ifs.close();
+        return;
+    }
+
+    //4、文件读取
+    ifs.putback(ch);
+
+    Teacher tea_t;
+    while(ifs>>tea_t.TeaNum&&ifs>>tea_t.I_Name&&ifs>>tea_t.I_Password)
+    {
+        TeaInfo.push_back(tea_t);
+    }
+
+    //5、关闭文件
+    ifs.close();
+}
+
+void ReservationSystem::read_Stufile(vector<Student> &StuInfo)
+{
+    //1、打开文件
+    ifstream ifs;
+    ifs.open(filename_stu,ios::in);
+
+    //2、文件是否存在
+    if(!ifs.is_open())
+    {
+//        cout<<"文件不存在";
+        ifs.close();
+        return;
+    }
+
+    //3、文件是否为空
+    char ch;
+    ch=ifs.get();
+
+    if(ifs.eof())
+    {
+//        cout<<"文件为空";
+        ifs.close();
+        return;
+    }
+
+    //4、文件读取
+    ifs.putback(ch);
+
+    Student stu_t;
+    while(ifs>>stu_t.StuNum&&ifs>>stu_t.I_Name&&ifs>>stu_t.I_Password)
+    {
+        StuInfo.push_back(stu_t);
+    }
+
+    //5、关闭文件
+    ifs.close();
+}
+
+void ReservationSystem::read_CRO_File(map<ComputerRoom,vector<Order>,less_ComRoom> &CRoomOrder)
+{
+    //1、打开文件
+    ifstream ifs;
+    ifs.open(filename_CRO,ios::in);
+
+    //2、文件是否存在
+    if(!ifs.is_open())
+    {
+//        cout<<"文件不存在";
+        ifs.close();
+        return;
+    }
+
+    //3、文件是否为空
+    char ch;
+    ch=ifs.get();
+
+    if(ifs.eof())
+    {
+//        cout<<"文件为空";
+        ifs.close();
+        return;
+    }
+
+    //4、文件读取
+    ifs.putback(ch);
+
+//    cout<<"文件读取成功"<<endl;
+
+    string str1;//索引/预约人
+    string str2;//CR状态/OD状态
+    string str3;//容量/星期
+    string str4;//':'/时间段
+
+
+    int pos;
+    int T_capacity=CRoomOrder.size();
+
+    vector<Order> vod_t;
+    ComputerRoom cr_t;
+    Order od_t;
+
+    while(ifs>>str1&&ifs>>str2&&ifs>>str3&&ifs>>str4)
+    {
+        pos=str4.find(":");//找到返回下标，找不到返回-1
+
+        if(pos != -1)//找到':'
+        {
+            if(T_capacity==0)
+            {
+                cr_t.CR_index=str1;
+                cr_t.capacity=str3;
+                cr_t.CR_state=str2;
+                T_capacity++;
+            }
+
+            else//容量不为0
+            {
+                CRoomOrder.insert(make_pair(cr_t,vod_t));
+
+                vod_t.clear();
+
+                cr_t.CR_index=str1;
+                cr_t.capacity=str3;
+                cr_t.CR_state=str2;
+
+
+            }
+        }
+
+        else//pos==-1,找不到':'
+        {
+            od_t.Applicant=str1;
+            od_t.Week=str3;
+            od_t.time=str4;
+            od_t.OD_state=str2;
+
+            vod_t.push_back(od_t);
+        }
+//        cout<<CRoomOrder.size()<<" ";//test
+    }
+    CRoomOrder.insert(make_pair(cr_t,vod_t));
+//    cout<<CRoomOrder.size()<<" ";//test
+
+    //5、关闭文件
+    ifs.close();
+}
+
+void ReservationSystem::Init_Admin_ReadFile(map<ComputerRoom,vector<Order>,less_ComRoom> &CRoomOrder,vector<Administrator> &AdminInfo,vector<Teacher> &TeaInfo,vector<Student> &StuInfo)
 {
 //    cout<<"调用init";
 
     AdminInfo.clear();
-    read_IentityFile(1,AdminInfo,TeaInfo,StuInfo);
+    read_AdminFile(AdminInfo);
 
     TeaInfo.clear();
-    read_IentityFile(2,AdminInfo,TeaInfo,StuInfo);
+    read_Teafile(TeaInfo);
 
     StuInfo.clear();
-    read_IentityFile(3,AdminInfo,TeaInfo,StuInfo);
+    read_Stufile(StuInfo);
 
-    ComRoomInfo.clear();
-    read_ComRoomFile(ComRoomInfo);
+    CRoomOrder.clear();
+    read_CRO_File(CRoomOrder);
+}
+
+void ReservationSystem::Init_Tea_ReadFile(vector<Teacher> &TeaInfo,map<ComputerRoom,vector<Order>,less_ComRoom> &CRoomOrder)
+{
+    TeaInfo.clear();
+    read_Teafile(TeaInfo);
+
+    CRoomOrder.clear();
+    read_CRO_File(CRoomOrder);
+}
+
+void ReservationSystem::Init_Stu_ReadFile(vector<Student> &StuInfo,map<ComputerRoom,vector<Order>,less_ComRoom> &CRoomOrder)
+{
+    StuInfo.clear();
+    read_Stufile(StuInfo);
+
+    CRoomOrder.clear();
+    read_CRO_File(CRoomOrder);
+}
+
+void ReservationSystem::check_CRoom_empty(map<ComputerRoom,vector<Order>,less_ComRoom> &CRoomOrder)
+{
+    for(map<ComputerRoom,vector<Order>,less_ComRoom>::iterator it=CRoomOrder.begin();it!=CRoomOrder.end();it++)
+    {
+        if(it->second.size()==0)
+        {
+            ComputerRoom cr_t;
+            cr_t.CR_index=it->first.CR_index;
+            cr_t.capacity=it->first.capacity;
+            cr_t.CR_state="0";
+
+            vector<Order> empty_vod;
+
+            CRoomOrder.erase(it);
+
+            CRoomOrder.insert(make_pair(cr_t,empty_vod));
+        }
+    }
+    Administrator ad_t;
+    ad_t.save_ComRoom(CRoomOrder);
 }

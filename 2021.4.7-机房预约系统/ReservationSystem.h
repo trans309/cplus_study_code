@@ -11,6 +11,7 @@ using namespace std;
 #include "teacher.h"
 #include "student.h"
 #include "computer_room.h"
+#include "order.h"
 
 enum re_menu
 {
@@ -20,13 +21,12 @@ enum re_menu
     STUDENT
 };
 
-enum ad_menu
+enum system_menu
 {
-    AD_RETURN,
+    RETURN,
     REGISTRATION,
     LOGIN
 };
-class Administrator;
 
 class ReservationSystem
 {
@@ -36,8 +36,7 @@ public:
     vector<Teacher> TeaInfo;//教师信息
     vector<Student> StuInfo;//学生信息
 
-    map<int,ComputerRoom> ComRoomInfo;//机房信息
-
+    map<ComputerRoom,vector<Order>,less_ComRoom> CRoomOrder;//机房预约信息
 
 
 
@@ -69,16 +68,32 @@ public:
     void menu();
     void menu_choice();
 
-    //读取文件
+    //检测机房空状态
+    void check_CRoom_empty(map<ComputerRoom,vector<Order>,less_ComRoom> &CRoomOrder);
+
+
+
+
+    //读取 身份 文件
     //type1---管理员
+    void read_AdminFile(vector<Administrator> &AdminInfo);
     //type2---教师
+    void read_Teafile(vector<Teacher> &TeaInfo);
     //type3---学生
-    void read_IentityFile(int type,vector<Administrator> &AdminInfo,vector<Teacher> &TeaInfo,vector<Student> &StuInfo);
-    //读取机房文件
-    void read_ComRoomFile(map<int,ComputerRoom> &ComInfo);
+    void read_Stufile(vector<Student> &StuInfo);
 
-    //初始化读取文件
-    void init_readfile(map<int,ComputerRoom> &ComRoomInfo,vector<Administrator> &AdminInfo,vector<Teacher> &TeaInfo,vector<Student> &StuInfo);
+    //读取 机房/预约记录 文件
+    void read_CRO_File(map<ComputerRoom,vector<Order>,less_ComRoom> &CRoomOrder);
+    //Administrator
+    //初始化 管理员 读取文件
+    void Init_Admin_ReadFile(map<ComputerRoom,vector<Order>,less_ComRoom> &CRoomOrder,vector<Administrator> &AdminInfo,vector<Teacher> &TeaInfo,vector<Student> &StuInfo);
 
+    //Teacher
+    //初始化 教师 读取文件
+    void Init_Tea_ReadFile(vector<Teacher> &TeaInfo,map<ComputerRoom,vector<Order>,less_ComRoom> &CRoomOrder);
+
+    //Student
+    //初始化 学生 读取文件
+    void Init_Stu_ReadFile(vector<Student> &StuInfo,map<ComputerRoom,vector<Order>,less_ComRoom> &CRoomOrder);
 
 };

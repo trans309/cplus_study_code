@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/2021.4" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/2021" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -16,7 +16,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/2021.4" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/2021" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -40,6 +40,8 @@
 		<Unit filename="computer_room.cpp" />
 		<Unit filename="computer_room.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="order.cpp" />
+		<Unit filename="order.h" />
 		<Unit filename="student.cpp" />
 		<Unit filename="student.h" />
 		<Unit filename="teacher.cpp" />

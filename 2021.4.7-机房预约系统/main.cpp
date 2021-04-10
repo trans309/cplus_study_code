@@ -3,10 +3,31 @@
 using namespace std;
 
 #include "ReservationSystem.h"
+#include <dirent.h>
 
 
 int main()
 {
+    string filedir="./file";
+    DIR *dir;
+    if((dir=opendir(filedir.c_str())) == NULL)
+    {
+        //创建文件夹
+
+    //1、
+//    string folderPath = ".\\file";
+//
+//    string command;
+//    command = "mkdir -p " + folderPath;
+//    system(command.c_str());
+
+    //2、
+    system("md .\\file");
+
+    cout<<"文件夹创建成功！"<<endl;
+    }
+
+
     ReservationSystem rs;
 
     while(1)
@@ -28,10 +49,10 @@ int main()
             rs.AdministratorSystem();
             break;
         case TEACHER:
-//            rs.TeacherSystem();
+            rs.TeacherSystem();
             break;
         case STUDENT:
-//            rs.StudentSystem();
+            rs.StudentSystem();
             break;
         }
 
