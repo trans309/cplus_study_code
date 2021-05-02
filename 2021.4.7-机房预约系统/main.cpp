@@ -24,7 +24,7 @@ int main()
     //2、
     system("md .\\file");
 
-    cout<<"文件夹创建成功！"<<endl;
+//    cout<<"文件夹创建成功！"<<endl;
     }
 
 

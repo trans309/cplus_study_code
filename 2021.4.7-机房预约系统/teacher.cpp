@@ -261,6 +261,8 @@ void Teacher::Audit_All_Order(map<ComputerRoom,vector<Order>,less_ComRoom> &CRoo
         cin>>is_pass;
         if(is_pass==1)
         {
+            //it是一个vector<order>的迭代器（相当于指针），及it存放的是预约--map容器的地址
+            //该迭代器可指向CRoomOredr，改变其中参数
             it[can_od-1]->OD_state="3";
             cout<<this->get_odstate_tea(it[can_od-1]->OD_state)<<endl;
 
