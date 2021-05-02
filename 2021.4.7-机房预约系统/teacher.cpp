@@ -226,7 +226,7 @@ void Teacher::Audit_All_Order(map<ComputerRoom,vector<Order>,less_ComRoom> &CRoo
     this->Teacher_menu();
 
     int index=0;
-    vector<Order>::iterator* it=new vector<Order>::iterator[21];
+    vector<Order>::iterator* it=new vector<Order>::iterator[CRoomOrder.size()*21];
 
     for(map<ComputerRoom,vector<Order>,less_ComRoom>::iterator it1=CRoomOrder.begin();it1!=CRoomOrder.end();it1++)
     {

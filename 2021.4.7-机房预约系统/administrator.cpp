@@ -496,7 +496,7 @@ void Administrator::computerroom_modify(map<ComputerRoom,vector<Order>,less_ComR
 
                 com_in.CR_index=index;
 
-                if(CRoomOrder.find(com_in) == CRoomOrder.end())
+                if(CRoomOrder.find(com_in)/*找到返回查找元素迭代器，找不到返回end（），找不到元素就会插入*/ == CRoomOrder.end())
                 {
                     CRoomOrder.insert(make_pair(com_in,vod_in));
                     cout<<"添加成功！"<<endl;
